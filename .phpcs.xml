@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ruleset name="PSR12 Coding Standards">
+    <description>A custom set of code standard rules</description>
+
+    <rule ref="PSR12"/>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <rule ref="Generic.Files.LineLength.TooLong">
+        <exclude-pattern>partials/</exclude-pattern>
+    </rule>
+
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>components/*.php</exclude-pattern>
+        <exclude-pattern>Plugin.php</exclude-pattern>
+        <exclude-pattern>controllers/*.php</exclude-pattern>
+    </rule>
+
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>assets/*</exclude-pattern>
+    <exclude-pattern>*\.(?!php$)</exclude-pattern>
+</ruleset>

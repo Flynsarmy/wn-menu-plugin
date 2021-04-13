@@ -1,0 +1,28 @@
+{
+    "name": "flynsarmy/menu",
+    "description": "Create flexible menus straight from Winter CMS admin",
+    "type": "winter-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "flynsarmy",
+            "email": "flynsarmy@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "scripts": {
+        "phpstan": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
+        "phpcbf": "vendor/bin/phpcbf --standard=./.phpcs.xml ./",
+        "phpcs":  "vendor/bin/phpcs  -s --standard=./.phpcs.xml ./",
+        "phpcompat": "vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 8.0.2 ./",
+        "phpunit": "vendor/bin/phpunit ./tests/unit/",
+        "coverage": "vendor/bin/phpunit tests/unit --coverage-html coverage --whitelist src/",
+        "lint": "vendor/bin/parallel-lint --exclude vendor .",
+        "test": [
+            "composer validate --strict",
+            "@phpcs"
+        ]
+    }
+}
