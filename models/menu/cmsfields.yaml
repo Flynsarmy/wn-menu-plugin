@@ -1,0 +1,35 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        span: left
+        label: Name
+        attributes:
+            default-focus: 1
+
+tabs:
+    cssClass: master-area
+    fields:
+        id_attrib:
+            label: ID Attribute
+            span: left
+            tab: cms::lang.editor.settings
+
+        class_attrib:
+            label: Class Attribute
+            span: right
+            tab: cms::lang.editor.settings
+
+        short_desc:
+            label: Short Description
+            tab: cms::lang.editor.settings
+
+secondaryTabs:
+    stretch: true
+    fields:
+        items:
+            type: Flynsarmy\Menu\FormWidgets\ItemList
+            size: huge
+            tab: Fields

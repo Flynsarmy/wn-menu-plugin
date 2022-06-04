@@ -1,0 +1,57 @@
+<?php if ($items): ?>
+    <ul>
+        <?php foreach ($items as $item): ?>
+            <?php if (property_exists($item, 'items')): ?>
+                <?php if ($item->items): ?>
+                    <li class="group" data-status="<?= $this->getCollapseStatus($item->title, false) ? 'expanded' : 'collapsed' ?>">
+                        <h4><a href="javascript:;"><?= e($item->title) ?></a></h4>
+                        <?= $this->makePartial('items', ['items'=>$item->items, 'nested'=>true]) ?>
+                    </li>
+                <?php endif ?>
+            <?php else: ?>
+            <?php
+                $dataId = $this->itemType.'-'.$item->id;
+            ?>
+                <li
+                    class="item"
+                    data-item-type="<?= $this->itemType ?>"
+                    data-id="<?= e($dataId) ?>">
+                    <a href="javascript:;"
+                        data-control="dragvalue"
+                        data-text-value="<?= $item->dragValue ?>">
+                        <span class="title"><?= e($item->title) ?></span>
+                        <span class="description" title="<?= e($item->description) ?>">
+                            <?php foreach ($item->descriptions as $title => $value): ?>
+                                <?php if (strlen($value)): ?>
+                                    <?= e($title) ?>: <strong><?= e($value) ?></strong>
+                                <?php endif ?>
+                            <?php endforeach ?>
+
+                            <?= e($item->description) ?>
+                        </span>
+                        <span class="borders"></span>
+                    </a>
+
+                    <input type="hidden" name="template[<?= e($item->id) ?>]" value="0" />
+                    <div class="checkbox custom-checkbox nolabel">
+                        <?php $cbId = 'cb' . md5($this->itemType . '/' . $item->id) ?>
+                        <input
+                            id="<?= $cbId ?>"
+                            type="checkbox"
+                            name="template[<?= $item->id ?>]"
+                            <?= $this->isItemSelected($item->id) ? 'checked' : null ?>
+                            data-request="<?= $this->getEventHandler('onSelect') ?>"
+                            value="1">
+                        <label for="<?= $cbId ?>">Select</label>
+                    </div>
+                </li>
+            <?php endif ?>
+        <?php endforeach ?>
+    </ul>
+<?php else: ?>
+    <p class="no-data"><?= e(trans($this->noRecordsMessage)) ?></p>
+<?php endif ?>
+
+<?php if (!isset($nested)): ?>
+    <input type="hidden" name="theme" value="<?= e($this->theme->getDirName()) ?>">
+<?php endif ?>

@@ -37,7 +37,13 @@ class ItemList extends FormWidgetBase
      */
     public function prepareVars()
     {
-        $sessionKey = $this->controller->widget->formItems->sessionKey;
+        // CMS Menus won't have this session key
+        if (isset($this->controller->widget->formItems->sessionKey)) {
+            $sessionKey = $this->controller->widget->formItems->sessionKey;
+        } else {
+            $sessionKey = '';
+        }
+
         $columnName = $this->valueFrom;
 
         $this->vars['itemTypes'] = MenuManager::instance()->listItemTypes();

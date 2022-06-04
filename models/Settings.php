@@ -19,6 +19,16 @@ class Settings extends Model
     // Page list for drop down fields
     protected $pages = [];
 
+    /**
+     * @var array The rules to be applied to the data.
+     */
+    public $rules = [];
+
+    /**
+     * @var array The array of custom error messages.
+     */
+    public $customMessages = [];
+
     public function getPagesDropDown()
     {
         if (!$this->pages) {

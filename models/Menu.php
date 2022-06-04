@@ -134,4 +134,19 @@ class Menu extends Model
 
         return require __DIR__ . '/../partials/_menu.php';
     }
+
+    /**
+     * Prepares the theme datasource for the model.
+     * @param \Cms\Classes\Theme $theme Specifies a parent theme.
+     * @return $this
+     */
+    public static function inTheme($theme)
+    {
+        return new static();
+    }
+
+    public function getCmsTabTitle()
+    {
+        return 'Menu';
+    }
 }

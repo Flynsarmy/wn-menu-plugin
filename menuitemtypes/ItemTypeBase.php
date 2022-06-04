@@ -59,7 +59,7 @@ abstract class ItemTypeBase
      * $settings->customMessages['master_object_id.required'] = 'The Blog Post field is required.';
      *
      *
-     * @param Flynsarmy\Menu\Models\Settings $settings
+     * @param \Flynsarmy\Menu\Models\Settings $settings
      *
      * @return void
      */

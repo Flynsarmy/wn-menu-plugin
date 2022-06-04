@@ -7,7 +7,7 @@ use Flynsarmy\Menu\Classes\DropDownHelper;
 use Flynsarmy\Menu\Models\MenuItem;
 use Flynsarmy\Menu\Models\Settings;
 use Winter\Blog\Models\Post;
-use System\Classes\ApplicationException;
+use ApplicationException;
 use URL;
 
 class BlogPost extends ItemTypeBase
@@ -87,23 +87,23 @@ class BlogPost extends ItemTypeBase
     }
 
     /**
-     * Adds any validation rules to $item->rules array that are required
+     * Adds any validation rules to $settings->rules array that are required
      * by the ItemType's extended fields. If necessary, add custom messages
-     * to $item->customMessages.
+     * to $settings->customMessages.
      *
      * For example:
-     * $item->rules['master_object_id'] = 'required';
-     * $item->customMessages['master_object_id.required'] = 'The Blog Post field is required.';
+     * $settings->rules['master_object_id'] = 'required';
+     * $settings->customMessages['master_object_id.required'] = 'The Blog Post field is required.';
      *
      *
-     * @param MenuItem $item
+     * @param \Flynsarmy\Menu\Models\Settings $settings
      *
      * @return void
      */
     public function extendSettingsModel(Settings $settings)
     {
-        $item->rules['blog_post_page'] = 'required';
-        $item->customMessages['blog_post_page.required'] = 'The Blog Post Page field is required.';
+        $settings->rules['blog_post_page'] = 'required';
+        $settings->customMessages['blog_post_page.required'] = 'The Blog Post Page field is required.';
     }
 
     /**

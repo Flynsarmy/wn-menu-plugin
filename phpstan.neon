@@ -1,0 +1,16 @@
+includes:
+    - ./vendor/lemax10/ocstan/extension.neon
+parameters:
+    level: 5
+    inferPrivatePropertyTypeFromConstructor: true
+    bootstrapFiles:
+    paths:
+        - classes
+        - components
+        - controllers
+        - formwidgets
+        - menuitemtypes
+        - models
+        - updates
+        - widgets
+    ignoreErrors:
