@@ -116,32 +116,32 @@ class Plugin extends PluginBase
     public function boot()
     {
         // Add 'Menus' to the CMS sidebar
-        Event::listen('backend.menu.extendItems', function (NavigationManager $manager) {
-            $manager->addSideMenuItems('WINTER.CMS', 'CMS', [
-                'menus' => [
-                    'label'        => 'Menus',
-                    'icon'         => 'icon-bars',
-                    'url'          => 'javascript:;',
-                    'attributes'   => ['data-menu-item' => 'menus'],
-                    'permissions'  => ['cms.manage_menus'],
-                    'counterLabel' => 'cms::lang.page.unsaved_label'
-                ],
-            ]);
-        });
+        // Event::listen('backend.menu.extendItems', function (NavigationManager $manager) {
+        //     $manager->addSideMenuItems('WINTER.CMS', 'CMS', [
+        //         'menus' => [
+        //             'label'        => 'Menus',
+        //             'icon'         => 'icon-bars',
+        //             'url'          => 'javascript:;',
+        //             'attributes'   => ['data-menu-item' => 'menus'],
+        //             'permissions'  => ['cms.manage_menus'],
+        //             'counterLabel' => 'cms::lang.page.unsaved_label'
+        //         ],
+        //     ]);
+        // });
 
-        CmsController::extend(function (CmsController $controller) {
-            // Handle the data to be passed to our new sidebar 'Menus' menu item.
-            new MenuList($controller, 'menuList', function () {
-                return Menu::all()->toArray();
-            });
+        // CmsController::extend(function (CmsController $controller) {
+        //     // Handle the data to be passed to our new sidebar 'Menus' menu item.
+        //     new MenuList($controller, 'menuList', function () {
+        //         return Menu::all()->toArray();
+        //     });
 
-            // Override the CMS sidepanel partial. This is pretty awful as only
-            // one plugin can ever do it at a time. We'll eventually want to
-            // replace this with a fireViewEvent() or something.
-            $controller->addViewPath("$/flynsarmy/menu/controllers/cms/index");
+        //     // Override the CMS sidepanel partial. This is pretty awful as only
+        //     // one plugin can ever do it at a time. We'll eventually want to
+        //     // replace this with a fireViewEvent() or something.
+        //     $controller->addViewPath("$/flynsarmy/menu/controllers/cms/index");
 
-            $controller->formConfigs['menu'] = "$/flynsarmy/menu/models/menu/cmsfields.yaml";
-            $controller->types['menu'] = Menu::class;
-        });
+        //     $controller->formConfigs['menu'] = "$/flynsarmy/menu/models/menu/cmsfields.yaml";
+        //     $controller->types['menu'] = Menu::class;
+        // });
     }
 }
